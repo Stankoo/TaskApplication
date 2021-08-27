@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
+
 
 @RestController
 @RequestMapping("/v1/trello")
@@ -23,16 +23,7 @@ public class TrelloController {
     }
 
     @GetMapping("getTrelloBoards")
-    public void getTrelloBoards() {
-        List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
+    public List<TrelloBoardDto> getTrelloBoards() {
+        return trelloClient.getTrelloBoards();}
 
-        trelloBoards.stream()
-                .filter(trelloBoardDto -> Objects.nonNull(trelloBoardDto.getId())
-                        && Objects.nonNull(trelloBoardDto.getName()))
-                .filter(trelloBoardDto -> trelloBoardDto.getName().contains("Kodilla"))
-                .forEach(trelloBoardDto -> {
-                    System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName());
-            });
-
-    }
 }
