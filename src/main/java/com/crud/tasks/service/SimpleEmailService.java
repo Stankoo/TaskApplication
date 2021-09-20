@@ -19,9 +19,7 @@ public class SimpleEmailService {
 
     public void send(final Mail mail) {
         try {
-            SimpleMailMessage mailMessage = createMailMessage(mail);
-
-            javaMailSender.send(mailMessage);
+            javaMailSender.send(createMailMessage(mail));
             log.info("Emial has been sent.");
         } catch (MailException e) {
             log.error("Failed to process email sending: " + e.getMessage(), e);
@@ -33,12 +31,11 @@ public class SimpleEmailService {
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMessage());
-        mailMessage.setCc(mail.getToCc());
-        mailMessage.setCc(mail.getToCc());
+        setCcIfPresent(mail, mailMessage);
         return mailMessage;
     }
 
-    private void setCc(final Mail mail, SimpleMailMessage mailMessage )
+    private void setCcIfPresent(final Mail mail, SimpleMailMessage mailMessage )
     {
         if(Optional.ofNullable(mail.getToCc()).isPresent()) {
             mailMessage.setCc(mail.getToCc());
