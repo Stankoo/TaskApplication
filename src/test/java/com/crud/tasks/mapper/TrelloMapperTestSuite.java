@@ -23,7 +23,7 @@ class TrelloMapperTestSuite {
     private final  List<TrelloList> trelloLists = new ArrayList<>();
 
     @Test
-    void shouldMapBoardDtosToBoards() {
+    void shouldMapBoardDtoToBoards() {
         //Given & When
         TrelloBoardDto trelloBoardDto = new TrelloBoardDto("name", "1", new ArrayList<>());
         TrelloBoardDto trelloBoardDto2 = new TrelloBoardDto("name2", "2", new ArrayList<>());
@@ -36,7 +36,7 @@ class TrelloMapperTestSuite {
     }
 
     @Test
-    void shouldMapBoardsToBoardDtos() {
+    void shouldMapBoardsToBoardDto() {
         //Given & When
         TrelloBoard trelloBoard = new TrelloBoard("name", "1", new ArrayList<>());
         TrelloBoard trelloBoard2 = new TrelloBoard("name2", "2", new ArrayList<>());
@@ -70,7 +70,7 @@ class TrelloMapperTestSuite {
     }
 
     @Test
-    void shouldMapListDtosToLists() {
+    void shouldMapListDtoToLists() {
         //Given & When
         TrelloListDto trelloListDto = new TrelloListDto("1", "name", false);
         TrelloListDto trelloListDto2 = new TrelloListDto("1", "name", false);
@@ -83,7 +83,7 @@ class TrelloMapperTestSuite {
     }
 
     @Test
-    void shouldMapListsToListDtos() {
+    void shouldMapListsToListDto() {
         //Given & When
         TrelloList trelloList = new TrelloList("1", "name", false);
         TrelloList trelloList2 = new TrelloList("1", "name", false);
